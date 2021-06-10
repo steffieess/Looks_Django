@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="{% static 'core/js/jquery.flexslider.js' %}"></script>
+    <link rel="icon" href="{% static 'core/img/logo look2.png' %}" type="image/png"/>
+    <title>Recuperar Contraseña</title>
+    <script type="text/javascript" charset="utf-8">
+    
+  $(window).load(function() {
+    $('.flexslider').flexslider({
+    	touch: true,
+    	pauseOnAction: false,
+    	pauseOnHover: false,
+    });
+  });
+    </script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+      $("#error").hide(); /* ocultando el div de los errores */
+
+      /*Indica que las validaciones del formulario sólo se ejecute con el "Submit"*/
+      $("#formulario_clave").submit(function () {
+        var mensaje = "Por favor revisar los siguientes datos en su registro: <br>";
+        
+        if ($("#correo").val().trim().length == 0) {
+          mensaje = mensaje + "<i><br>El Correo Electrónico no puede quedar vacío";
+        }
+
+        if (mensaje != "Por favor revisar los siguientes datos en su registro: ") {
+          $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
+          $("#error").show(); //hace visible el div 
+          event.preventDefault(); //evita que los datos del formulario se envien
+        }
+        
+      });
+    });
+</script>
+
+</head>
+<body>
+    <div class="logo">
+        <center><h4> <img src="{% static 'core/img/logo look2.png' %}" height="30" alt="CoolBrand"> Look's</h4></center>
+    </div>
+    <nav>
+      <ul class="menu">
+        <li class="item"><a href="{% url 'home' %}">Inicio</a></li>
+        <li class="item"><a href="{% url 'hombre' %}">Hombre</a></li>
+        <li class="item"><a href="{% url 'mujer' %}">Mujer</a></li>
+        <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+        <li class="item"><a href="{% url 'contactanos' %}">Contáctanos</a></li>
+        <li class="item"><a href="{% url 'ayudanos' %}">Ayúdanos</a></li>
+        <li class="item"><a href="{% url 'iniciosesion' %}">Login</a></li>
+        <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+    </ul>
+    </nav>
+
+    <script>
+        const toggle = document.querySelector(".toggle");
+        const menu = document.querySelector(".menu");
+        const items = document.querySelectorAll(".item");
+
+        /* Toggle mobile menu */
+        function toggleMenu() {
+            if (menu.classList.contains("active")) {
+                menu.classList.remove("active");
+                toggle.querySelector("a").innerHTML = "<i class='fas fa-bars'></i>";
+            } else {
+                menu.classList.add("active");
+                toggle.querySelector("a").innerHTML = "<i class='fas fa-times'></i>";
+            }
+        }
+
+        /* Activate Submenu */
+        function toggleItem() {
+            if (this.classList.contains("submenu-active")) {
+                this.classList.remove("submenu-active");
+            } else if (menu.querySelector(".submenu-active")) {
+                menu.querySelector(".submenu-active").classList.remove("submenu-active");
+                this.classList.add("submenu-active");
+            } else {
+                this.classList.add("submenu-active");
+            }
+        }
+
+        /* Close Submenu From Anywhere */
+        function closeSubmenu(e) {
+            let isClickInside = menu.contains(e.target);
+
+            if (!isClickInside && menu.querySelector(".submenu-active")) {
+                menu.querySelector(".submenu-active").classList.remove("submenu-active");
+            }
+        }
+        /* Event Listeners */
+        toggle.addEventListener("click", toggleMenu, false);
+        for (let item of items) {
+            if (item.querySelector(".submenu")) {
+                item.addEventListener("click", toggleItem, false);
+            }
+            item.addEventListener("keypress", toggleItem, false);
+        }
+        document.addEventListener("click", closeSubmenu, false);
+    </script>
+    <!--MENU BAR FIN-->
+    <!--RECUPERACIÓN DE CONTRASEÑA-->
+
+    <div class="contenedor">
+            <div class="title">¿Olvidaste tu contraseña?</div>
+            <br>
+            <p>¡No te preocupes! Ingresa tu correo electrónico para que podamos ayudarte a recuperarla.</p>
+            <div class="content">
+              <form action="correorecu.html" name="formulario_recuperacion" id="formulario_clave">
+                <div class="user-details">
+                  <div class="input-box">
+                    <span class="details"><label for="correo">Correo Electrónico</label></span>
+                    <input type="email" name="correo" id="correo" placeholder="look@gmail.com" >
+                  </div>
+                  <div class="input-box">
+                    <div id="error" class="alerta"></div>
+                  <button type="submit" class="boton">Enviar</button>
+                </div>
+            </div>
+              </form>
+            </div>
+    </div>
+
+    <!--FIN RECUPERACIÓN DE CONTRASEÑA-->
+    <!--FOOTER-->
+    <section id="info">
+            <footer>
+                <br>
+                <h1> MANTENTE EN CONTACTO </h1>
+                <p>
+                    Regístrate para recibir noticias sobre nuevos <br>
+                    lanzamientos y promociones exclusivas.
+                    <br>
+                </p>
+               
+                <form action="{% url 'registro' %}">
+                <center><button class="button button1">Pulsa Aquí</button></center>
+                </form>
+                <br>
+                <strong>
+                    <center>2021 &copy; Look´s</center>
+                </strong>
+            </footer>
+        </section>
+<!--CIERRE FOOTER-->
+</body>
+</html>

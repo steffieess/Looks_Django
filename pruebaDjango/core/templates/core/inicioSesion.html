@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.8/css/mdb.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'core/css/cssuscribe.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="icon" href="{% static 'core/img/logo look2.png' %}" type="image/png"/>
+</head>
+<body> 
+    <div class="login">
+        <article class="fondo">
+        <img src="{% static 'core/img/user.png' %}" class="avatar">
+        <h3>Inicio de Sesión</h3>
+        <form action="home.html" method="POST" name="formulario_contacto">
+				<div class="form-group">
+                    <label for="mail"><i class="fas fa-user"></i> E-mail</label>
+                    <input type="text" class="form-control" name="mail" id="mail" placeholder="looks@looks.cl" required>
+                </div>
+                <div class="form-group">
+                    <label for="password"><i class="fas fa-lock"></i> Contraseña</label>
+                    <input type="password" class="form-control" name="contraseña" id="contraseña" placeholder="••••••••••••••" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn"> Ingresar </button>
+                </div>
+                <center><a href="{% url 'recuperarclave' %}"> ¿Olvidaste tu contraseña? </a></center>
+                <center><a href="{% url 'registro' %}"> ¿No estás registrado? </a><br></center>
+                
+        </form>
+        </article>
+    </div>
+</body>
+</html>
+
+   

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="{% static 'core/js/jquery.flexslider.js' %}"></script>
+    <script src="{% static 'core/js/jquery-3.2.1.js' %}"></script>
+    <script src="{% static 'core/js/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <title>Listado</title>
+    <link rel="icon" href="{% static 'core/img/logo look2.png' %}" type="image/png"/>
+	<script type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body class="fondo">
+    <div class="logo">
+        <center>
+            <h4> <img src="{% static 'core/img/logo look2.png' %}" height="30" alt="CoolBrand"> Look's</h4>
+        </center>
+    </div>
+    <nav>
+        <ul class="menu">
+            <li class="item"><a href="{% url 'home' %}">Inicio</a></li>
+            <li class="item"><a href="{% url 'hombre' %}">Hombre</a></li>
+            <li class="item"><a href="{% url 'mujer' %}">Mujer</a></li>
+            <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+            <li class="item"><a href="{% url 'contactanos' %}">Contáctanos</a></li>
+            <li class="item"><a href="{% url 'ayudanos' %}">Ayúdanos</a></li>
+            <li class="item"><a href="{% url 'iniciosesion' %}">Login</a></li>
+            <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
+    </nav>
+    
+    <script>
+        const toggle = document.querySelector(".toggle");
+        const menu = document.querySelector(".menu");
+        const items = document.querySelectorAll(".item");
+
+        /* Toggle mobile menu */
+        function toggleMenu() {
+            if (menu.classList.contains("active")) {
+                menu.classList.remove("active");
+                toggle.querySelector("a").innerHTML = "<i class='fas fa-bars'></i>";
+            } else {
+                menu.classList.add("active");
+                toggle.querySelector("a").innerHTML = "<i class='fas fa-times'></i>";
+            }
+        }
+
+        /* Activate Submenu */
+        function toggleItem() {
+            if (this.classList.contains("submenu-active")) {
+                this.classList.remove("submenu-active");
+            } else if (menu.querySelector(".submenu-active")) {
+                menu.querySelector(".submenu-active").classList.remove("submenu-active");
+                this.classList.add("submenu-active");
+            } else {
+                this.classList.add("submenu-active");
+            }
+        }
+
+        /* Close Submenu From Anywhere */
+        function closeSubmenu(e) {
+            let isClickInside = menu.contains(e.target);
+
+            if (!isClickInside && menu.querySelector(".submenu-active")) {
+                menu.querySelector(".submenu-active").classList.remove("submenu-active");
+            }
+        }
+        /* Event Listeners */
+        toggle.addEventListener("click", toggleMenu, false);
+        for (let item of items) {
+            if (item.querySelector(".submenu")) {
+                item.addEventListener("click", toggleItem, false);
+            }
+            item.addEventListener("keypress", toggleItem, false);
+        }
+        document.addEventListener("click", closeSubmenu, false);
+    </script>
+    <!--MENU BAR FIN-->
+
+    <div class="container">
+        <div class="row">
+            <h1>Listado</h1>
+        </div>
+
+        <div class="row">
+            <table>
+                <tr>
+                    <td>Numero de Documento</td>
+                    <td>Nombre</td>
+                    <td>Apellido Paterno</td>
+                    <td>Apellido Materno</td>
+                    <td>Correo</td>
+                    <td>Phone</td>
+                    <td>Contraseña</td>
+                </tr>
+                {% for m in usuario %}
+                <tr>
+                    <td>{{ m.nDocumento }}</td>
+                    <td>{{ m.nombre }}</td>
+                    <td>{{ m.appaterno }}</td>
+                    <td>{{ m.apmaterno }}</td>
+                    <td>{{ m.email }}</td>
+                    <td>{{ m.telefono }}</td>
+                    <td>{{ m.password }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

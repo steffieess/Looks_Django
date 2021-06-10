@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <script src="{% static 'core/js/jquery.flexslider.js' %}"></script>
+    <link rel="icon" href="{% static 'core/img/logo look2.png' %}" type="image/png"/>
+    <script type="text/javascript" charset="utf-8">
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                touch: true,
+                pauseOnAction: false,
+                pauseOnHover: false,
+            });
+        });
+    </script>
+    <title>Look's® Chile</title>
+</head>
+
+<body class="fondo">
+    <div class="logo">
+        <center>
+            <h4> <img src="{% static 'core/img/logo look2.png' %}" height="30" alt="CoolBrand"> Look's</h4>
+        </center>
+    </div>
+    <nav>
+        <ul class="menu">
+            <li class="item"><a href="{% url 'home' %}">Inicio</a></li>
+            <li class="item"><a href="{% url 'hombre' %}">Hombre</a></li>
+            <li class="item"><a href="{% url 'mujer' %}">Mujer</a></li>
+            <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+            <li class="item"><a href="{% url 'contactanos' %}">Contáctanos</a></li>
+            <li class="item"><a href="{% url 'ayudanos' %}">Ayúdanos</a></li>
+            <li class="item"><a href="{% url 'iniciosesion' %}">Login</a></li>
+            <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
+    </nav>
+    
+    <script>
+        const toggle = document.querySelector(".toggle");
+        const menu = document.querySelector(".menu");
+        const items = document.querySelectorAll(".item");
+
+        /* Toggle mobile menu */
+        function toggleMenu() {
+            if (menu.classList.contains("active")) {
+                menu.classList.remove("active");
+                toggle.querySelector("a").innerHTML = "<i class='fas fa-bars'></i>";
+            } else {
+                menu.classList.add("active");
+                toggle.querySelector("a").innerHTML = "<i class='fas fa-times'></i>";
+            }
+        }
+
+        /* Activate Submenu */
+        function toggleItem() {
+            if (this.classList.contains("submenu-active")) {
+                this.classList.remove("submenu-active");
+            } else if (menu.querySelector(".submenu-active")) {
+                menu.querySelector(".submenu-active").classList.remove("submenu-active");
+                this.classList.add("submenu-active");
+            } else {
+                this.classList.add("submenu-active");
+            }
+        }
+
+        /* Close Submenu From Anywhere */
+        function closeSubmenu(e) {
+            let isClickInside = menu.contains(e.target);
+
+            if (!isClickInside && menu.querySelector(".submenu-active")) {
+                menu.querySelector(".submenu-active").classList.remove("submenu-active");
+            }
+        }
+        /* Event Listeners */
+        toggle.addEventListener("click", toggleMenu, false);
+        for (let item of items) {
+            if (item.querySelector(".submenu")) {
+                item.addEventListener("click", toggleItem, false);
+            }
+            item.addEventListener("keypress", toggleItem, false);
+        }
+        document.addEventListener("click", closeSubmenu, false);
+    </script>
+    <!--MENU BAR FIN-->
+
+    <!--CARRUSEL IMAGENES-->
+    <div class="flexslider">
+        <ul class="slides">
+            <li>
+                <img src="{% static 'core/img/prendas.jpg' %}" alt="">
+                <section class="flex-caption">
+                    <p>ESTILO</p>
+                </section>
+            </li>
+            <li>
+                <img src="{% static 'core/img/ny.jpg' %}" alt="">
+                <section class="flex-caption">
+                    <p>MODA</p>
+                </section>
+            </li>
+            <li>
+                <img src="{% static 'core/img/zapatos.jpg' %}" alt="">
+                <section class="flex-caption">
+                    <p>INNOVACIÓN</p>
+                </section>
+            </li>
+        </ul>
+    </div>
+    <!--FIN CARRUSEL-->
+
+    <div class="container">
+        <img src="{% static 'core/img/hombre4.jpg' %}" alt="Avatar" class="image" style="width:100%">
+        <div class="middle">
+          <div class="text"><a href="{% url 'hombre' %}">HOMBRE</a></div>
+        </div>
+      </div>
+      <div class="container">
+        <img src="{% static 'core/img/mujer.jpg' %}" alt="Avatar" class="image" style="width:100%">
+        <div class="middle">
+            <div class="text"><a href="{% url 'mujer' %}">MUJER</a></div>
+        </div>
+    </div>
+
+      <!-- INFORMAIÓN RRSS 'FOLLOW US' -->
+      <section id="rrss">
+        <br>
+        <h1> FOLLOW US!</h1>
+        <br>
+        <center><a href="https://www.facebook.com/Looks-107632338106386"  class="btn" target="_blank"><img
+                    src="{% static 'core/img/facebook.png' %}" width="30px"></a></center> <br>
+        <center><a href="https://www.instagram.com/looks_cl/" class="btn" target="_blank"><img
+                    src="{% static 'core/img/instagram.png' %}" width="30px"></a></center><br>
+        <center><a href="https://twitter.com/" class="btn" target="_blank"><img src="{% static 'core/img/twitter.png' %}" width="30px"></a> </center>
+        <br>
+    </section>
+    <!--CIERRE FOLLOW US-->
+
+    <!--FOOTER CON MANTENTE EN CONTACTO-->
+    <section id="info">
+        <footer>
+            <br>
+            <h1> MANTENTE EN CONTACTO </h1>
+            <p>
+                Regístrate para recibir noticias sobre nuevos <br>
+                lanzamientos y promociones exclusivas.
+                <br>
+            </p>
+            <form action="{% url 'registro' %}">
+                <center><button class="button button1">Pulsa Aquí</button></center>
+            </form>
+            <br>
+            <strong>
+                <center>2021 &copy; Look´s</center>
+            </strong>
+        </footer>
+    </section>
+    <!--CIERRE FOOTER-->
+</body>
+
+</html>
