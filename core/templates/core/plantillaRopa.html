@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/catalogo.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="js/jquery.flexslider.js"></script>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/script.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <title>Look's® Chile</title>
+    <link rel="icon" href="{% static 'core/img/logo look2.png' %}" type="image/png"/>
+	<script type="text/javascript" charset="utf-8"></script>
+</head>
+<body class="fondo">
+    <div class="logo">
+        <center><h4> <img src="{% static 'core/img/logo look2.png' %}}" height="30" alt="CoolBrand"> Look's</h4></center>
+    </div>
+    <nav>
+        <ul class="menu">
+            <li class="item"><a href="{% url 'home' %}">Inicio</a></li>
+            <li class="item"><a href="{% url 'hombre' %}">Hombre</a></li>
+            <li class="item"><a href="{% url 'mujer' %}">Mujer</a></li>
+            <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
+            <li class="item"><a href="{% url 'contactanos' %}">Contáctanos</a></li>
+            <li class="item"><a href="{% url 'ayudanos' %}">Ayúdanos</a></li>
+            <li class="item"><a href="{% url 'iniciosesion' %}">Login</a></li>
+            <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
+    </nav>
+
+    <script>
+        const toggle = document.querySelector(".toggle");
+        const menu = document.querySelector(".menu");
+        const items = document.querySelectorAll(".item");
+
+        /* Toggle mobile menu */
+        function toggleMenu() {
+            if (menu.classList.contains("active")) {
+                menu.classList.remove("active");
+                toggle.querySelector("a").innerHTML = "<i class='fas fa-bars'></i>";
+            } else {
+                menu.classList.add("active");
+                toggle.querySelector("a").innerHTML = "<i class='fas fa-times'></i>";
+            }
+        }
+
+        /* Activate Submenu */
+        function toggleItem() {
+            if (this.classList.contains("submenu-active")) {
+                this.classList.remove("submenu-active");
+            } else if (menu.querySelector(".submenu-active")) {
+                menu.querySelector(".submenu-active").classList.remove("submenu-active");
+                this.classList.add("submenu-active");
+            } else {
+                this.classList.add("submenu-active");
+            }
+        }
+
+        /* Close Submenu From Anywhere */
+        function closeSubmenu(e) {
+            let isClickInside = menu.contains(e.target);
+
+            if (!isClickInside && menu.querySelector(".submenu-active")) {
+                menu.querySelector(".submenu-active").classList.remove("submenu-active");
+            }
+        }
+        /* Event Listeners */
+        toggle.addEventListener("click", toggleMenu, false);
+        for (let item of items) {
+            if (item.querySelector(".submenu")) {
+                item.addEventListener("click", toggleItem, false);
+            }
+            item.addEventListener("keypress", toggleItem, false);
+        }
+        document.addEventListener("click", closeSubmenu, false);
+    </script>
+    <!--MENU BAR FIN-->
+    
+<!--Catálogo Visualización-->    
+    <div id="prendas" class="contenedor">
+        <td>
+            <tr>
+        <div class="product-item"><!-- creo una fila -->
+            <div>
+                <img src="{% static 'core/img/catalogo man/pantalon_blanco.jpg' %}" alt="Pantalon 1" class="responsive_imagenes">
+            </div>
+        </div>
+        </tr>
+        <tr>
+        <div class="product-item" id="info_prendas"><!-- creo una fila -->
+            <div>
+                <h1>Pantalón Negro</h1>
+                <h3>$10.990</h3>
+                <h5>Pantalón de tela negra color negro, sumamente cómodo<br></h5>
+            </div>
+            <div>
+                <form action="{% url 'home' %}" name="formulario_contacto" id="formulario_registro">
+                    <label for="talla">Seleccione talla</label>
+                        <select name="cuidad" id="ciudad" class="form-control">
+                        <option value="arica">S</option>
+                        <option value="iquique">M</option>
+                        <option value="antofagasta">L</option>
+                        </select>
+                    <label for="stock">Cantidad</label>
+                        <select name="stock" id="stock" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <div class="form-group">
+                            <div id="error" class="alerta"></div>
+                                <button type="submit" class="boton">Agregar al Carrito</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+        </tr>
+    </td>
+    </div>
+
+    
+
+<!--Catálogo Visualización-->
+
+    <!--FOOTER CON MANTENTE EN CONTACTO-->
+     <section id="info">
+        <footer>
+            <br>
+            <h1> MANTENTE EN CONTACTO </h1>
+            <p>
+                Regístrate para recibir noticias sobre nuevos <br>
+                lanzamientos y promociones exclusivas.<br>
+            </p>
+           <br>
+            <form action="{% url 'registro' %}">
+            <center><button class="button button1">Pulsa Aquí</button></center>
+            </form>
+            <br>
+            <strong>
+                <center>2021 &copy; Look´s</center>
+            </strong>
+        </footer>
+    </section>
+        <!--CIERRE FOOTER-->
+</body>

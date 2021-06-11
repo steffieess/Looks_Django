@@ -32,6 +32,9 @@ def registro(request):
 def nosotros(request):
     return render(request,'core/nosotros.html')
 
+def plantillaRopa(request):
+    return render(request,'core/plantillaRopa.html')
+
 def listado(request):
     usuarios = Persona.objects.all() #trae todos los registros de la tabla (select*from)
     contexto = {"usuario":usuarios}

@@ -794,3 +794,47 @@ form .user-details .input-box{
     resize: none;
     width: 100%;
   }
+
+  /*NUEVO CÓDIGO*/
+#info_prendas h5{
+  font-family: 'Poppins',sans-serif;
+  margin-top: 2px;
+}
+
+#info_prendas h1{
+  color:#c580ad;
+  font-family: 'Poppins',sans-serif;
+  margin-top: 10px;
+}
+
+#info_prendas h3{
+  font-family: 'Poppins',sans-serif;
+  margin-top: 5px;
+}
+
+#info_prendas label{
+  font-family: 'Poppins',sans-serif;
+  margin-top: 20px;
+}
+
+#info_prendas select{
+  font-family: 'Poppins',sans-serif;
+  margin-top: 20px;
+}
+
+#prendas img{
+  width: 500px;
+  height: 400px;
+}
+td {
+  font-size: 15px;
+  line-height: 20px;
+  padding: 0 20px;
+  text-align: justify;
+  vertical-align: top;
+  width: 50%;
+}
+
+td.first {
+  border-right: 5px solid #4BB495  ;
+}
