@@ -15,7 +15,7 @@ urlpatterns = [
     path('iniciosesion', inicioSesion, name="iniciosesion"),
     path('listado', listado, name="listado"),
     path('formulario', lario, name="formulario"),
-    patch('plantillaRopa', plantillaRopa, name="plantillaRopa")
+    path('plantillaRopa', plantillaRopa, name="plantillaRopa")
 
     
 ]

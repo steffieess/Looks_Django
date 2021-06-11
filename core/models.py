@@ -53,7 +53,7 @@ class Direccion (models.Model):
 class Tienda (models.Model):
     idTienda = models.IntegerField(primary_key=True, verbose_name='Id Tienda')
     nTienda = models.CharField(max_length=30, verbose_name='Nombre Tienda')
-    ciudad = models.ForeignKey(Ciudad,on_delete=models.CASCADE)
+    ciudad = models.ForeignKey(Ciudad,on_delete=models.CASCADE, null=True)
     
     def __str__(self):
         return self.nTienda
