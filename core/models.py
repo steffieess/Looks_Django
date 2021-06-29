@@ -121,11 +121,3 @@ class DetalleCompra (models.Model):
     
     def __str__(self):
         return self.idDetalle
-
-
-
-
-
-
-
-    
