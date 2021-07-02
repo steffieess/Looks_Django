@@ -26,7 +26,6 @@
             <li class="item"><a href="{% url 'mujer' %}">Mujer</a></li>
             <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
             <li class="item"><a href="{% url 'contactanos' %}">Contáctanos</a></li>
-            <li class="item"><a href="{% url 'ayudanos' %}">Ayúdanos</a></li>
             <li class="item"><a href="{% url 'iniciosesion' %}">Login</a></li>
             <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
         </ul>
@@ -95,30 +94,16 @@
             <section class="products-list">
 				<div class="product-item" category="pantalon">
 					<img src="{% static 'core/img/catalogo man/pantalon_blanco.jpg' %}" alt="" >
-					<a href="{% url 'plantillaRopa' %}">Pantalón Negro
+					<a href="{% url 'planhombre' %}">Pantalón Negro
                                 <br>
                                 $10.990
                     </a>
 				</div>
 				<div class="product-item" category="pantalon">
 					<img src="{% static 'core/img/catalogo man/pantalon_gris.jpg' %}" alt="" >
-					<a href="#">Pantalón Café
+					<a href="{% url 'planhombre' %}">Pantalón Café
                                 <br>
                                 $12.990
-                    </a>
-				</div>
-				<div class="product-item" category="pantalon">
-					<img src="{% static 'core/img/catalogo man/pantalon_negro.jpg' %}" alt="" >
-                    <a href="#">Blue Jeans
-                        <br>
-                        $15.990
-                    </a>
-				</div>
-				<div class="product-item" category="pantalon">
-					<img src="{% static 'core/img/catalogo man/polera_basic.jpg' %}" alt="" >
-                    <a href="#">Pantalón Negro Cadenas
-                        <br>
-                        $10.990
                     </a>
 				</div>
                 <!--POLERAS-->
@@ -136,20 +121,6 @@
                         $9.990
                     </a>
 				</div>
-				<div class="product-item" category="polera">
-					<img src="{% static 'core/img/catalogo man/polera2.jpg' %}" alt="" >
-                    <a href="#">Polera Negra
-                        <br>
-                        $10.990
-                    </a>
-				</div>
-				<div class="product-item" category="polera">
-					<img src="{% static 'core/img/catalogo man/polera4.png' %}" alt="" >
-                    <a href="#">Polera Negra Abotonada
-                        <br>
-                        $7.990
-                    </a>
-				</div>
                 <!--POLERONES-->
                 <div class="product-item" category="poleron">
 					<img src="{% static 'core/img/catalogo man/poleron1.jpg' %}" alt="" >
@@ -165,20 +136,6 @@
                         $15.990
                     </a>
 				</div>
-                <div class="product-item" category="poleron">
-					<img src="{% static 'core/img/catalogo man/poleron3.jpg' %}" alt="" >
-                    <a href="#">Poleron Call of Duty
-                        <br>
-                        $10.990
-                    </a>
-				</div>
-                <div class="product-item" category="poleron">
-					<img src="{% static 'core/img/catalogo man/poleron4.jpg' %}" alt="" >
-                    <a href="#">Poleron Jack & Jones
-                        <br>
-                        $12.990
-                    </a>
-				</div>
                 <!--ZAPATILLAS-->
                 <div class="product-item" category="zapatos">
 					<img src="{% static 'core/img/catalogo man/zapatilla1.jpg' %}" alt="" >
@@ -190,20 +147,6 @@
                 <div class="product-item" category="zapatos">
 					<img src="{% static 'core/img/catalogo man/zapatilla2.jpg' %}" alt="" >
                     <a href="#">Zapatillas Azules
-                        <br>
-                        $30.990
-                    </a>
-				</div>
-                <div class="product-item" category="zapatos">
-					<img src="{% static 'core/img/catalogo man/zapatilla3.jpg' %}" alt="" >
-                    <a href="#">Zapatillas Blancas
-                        <br>
-                        $30.990
-                    </a>
-				</div>
-                <div class="product-item" category="zapatos">
-					<img src="{% static 'core/img/catalogo man/zapatilla4.jpg' %}" alt="" >
-                    <a href="#">Zapatillas Rosadas
                         <br>
                         $30.990
                     </a>

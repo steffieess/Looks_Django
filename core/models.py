@@ -18,7 +18,6 @@ class Persona (models.Model):
     apmaterno = models.CharField(max_length=30, verbose_name='Apellido Materno', blank=False)
     email = models.CharField(max_length=60, verbose_name='Email', blank=False)
     telefono = models.IntegerField(verbose_name='Telefono', blank=False)
-    password = models.CharField(max_length=15, verbose_name='Clave', blank=False)
     tipous = models.ForeignKey(Tipous,on_delete=models.CASCADE, null=True)
 
     def __str__(self):
@@ -69,6 +68,7 @@ class Producto (models.Model):
     idProducto = models.IntegerField(primary_key=True, verbose_name='Id Producto')
     nProducto = models.CharField(max_length=30, verbose_name='Nombre del Producto', blank=False)
     stock = models.CharField(max_length=15, verbose_name= 'Info Stock', blank=False)
+    talla = models.CharField(max_length=15, verbose_name= 'Talla', blank=False, null=True)
     catalogo = models.ForeignKey(Catalogo,on_delete=models.CASCADE)
 
     def __str__(self):

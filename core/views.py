@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Persona
+from .models import Persona, Producto
 
 # Create your views here.
 def home(request):
@@ -32,13 +32,13 @@ def registro(request):
 def nosotros(request):
     return render(request,'core/nosotros.html')
 
-def plantillaRopa(request):
-    return render(request,'core/plantillaRopa.html')
+def planhombre(request):
+    return render(request,'core/planhombre.html')
 
-def listado(request):
-    usuarios = Persona.objects.all() #trae todos los registros de la tabla (select*from)
-    contexto = {"usuario":usuarios}
-    return render(request,'core/listado.html',contexto)
+def listarproductos (request):
+    productos=Producto.objects.all()
+    contexto = {"producto":productos}
+    return render(request, 'core/listarproductos.html',contexto)
 
 def lario(request):
     usuarios = Persona.objects.all() #trae todos los registros de la tabla (select*from)

@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load static%}
+    {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'core/css/catalogo.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
     <script src="{% static 'core/js/jquery.flexslider.js' %}"></script>
     <script src="{% static 'core/js/jquery-3.2.1.js' %}"></script>
     <script src="{% static 'core/js/script.js' %}"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
-    <title>Look's® Chile</title>
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+{% block cabecera %}
+
+{% endblock cabecera %}
     <link rel="icon" href="{% static 'core/img/logo look2.png' %}" type="image/png"/>
 	<script type="text/javascript" charset="utf-8"></script>
 </head>
@@ -29,7 +28,6 @@
             <li class="item"><a href="{% url 'mujer' %}">Mujer</a></li>
             <li class="item"><a href="{% url 'nosotros' %}">Nosotros</a></li>
             <li class="item"><a href="{% url 'contactanos' %}">Contáctanos</a></li>
-            <li class="item"><a href="{% url 'ayudanos' %}">Ayúdanos</a></li>
             <li class="item"><a href="{% url 'iniciosesion' %}">Login</a></li>
             <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
         </ul>
@@ -84,22 +82,18 @@
     <!--MENU BAR FIN-->
     
 <!--Catálogo Visualización-->    
-    <div id="prendas" class="contenedor">
+    <center><div id="prendas" class="contenedor">
         <td>
             <tr>
         <div class="product-item"><!-- creo una fila -->
-            <div>
-                <img src="{% static 'core/img/catalogo man/pantalon_blanco.jpg' %}" alt="Pantalon 1" class="responsive_imagenes">
-            </div>
+        {% block imgropa %}
+        {% endblock imgropa %}
         </div>
         </tr>
         <tr>
         <div class="product-item" id="info_prendas"><!-- creo una fila -->
-            <div>
-                <h1>Pantalón Negro</h1>
-                <h3>$10.990</h3>
-                <h5>Pantalón de tela negra color negro, sumamente cómodo<br></h5>
-            </div>
+        {% block desropa %}
+        {% endblock desropa %}
             <div>
                 <form action="{% url 'home' %}" name="formulario_contacto" id="formulario_registro">
                     <label for="talla">Seleccione talla</label>
@@ -125,7 +119,7 @@
         </div>
         </tr>
     </td>
-    </div>
+    </div></center>
 
     
 

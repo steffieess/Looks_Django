@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import home, Ayudanos, contactanos, correorecu, hombre, listado, mujer, nosotros, inicioSesion, recuperarClave, registro, lario, plantillaRopa
+from .views import home, Ayudanos, contactanos, correorecu, hombre, listarproductos, mujer, nosotros, inicioSesion, recuperarClave, registro, lario, planhombre
 
 urlpatterns = [
     path('home', home, name="home"),
@@ -13,9 +13,9 @@ urlpatterns = [
     path('correorecu', correorecu, name="correorecu"),
     path('nosotros', nosotros, name="nosotros"),
     path('iniciosesion', inicioSesion, name="iniciosesion"),
-    path('listado', listado, name="listado"),
+    path('listarproductos', listarproductos, name="listarproductos"),
     path('formulario', lario, name="formulario"),
-    path('plantillaRopa', plantillaRopa, name="plantillaRopa")
+    path('planhombre', planhombre, name="planhombre")
 
     
 ]

@@ -1,0 +1,21 @@
+{% extends 'core/planhombre.html' %}
+{% load static %}
+
+{% block cabecera %}
+<title>Hombre</title>
+{% endblock cabecera %}
+
+{% block imgropa %}
+<div>
+    <img src="{% static 'core/img/catalogo man/pantalon_blanco.jpg' %}" alt="Pantalon 1" class="responsive_imagenes">
+</div>
+{% endblock imgropa %}
+           
+    {% block desropa %}
+            <div>
+                <h1>Pantalón Negro</h1>
+                <h3>$10.990</h3>
+                <h5>Pantalón de tela negra color negro, sumamente cómodo<br></h5>
+            </div>
+    {% endblock desropa %}
+           
