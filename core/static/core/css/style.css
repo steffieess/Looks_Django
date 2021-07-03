@@ -343,10 +343,6 @@ a {
   cursor: pointer;
 }
 
-.section{
-  min-height: calc(100vh - 100px - 300px);
-}
-
 .button1 {
   background-color: black;
   color: white; 
